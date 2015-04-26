@@ -41,11 +41,15 @@ class PowerSource
   end
 
   def charge_system
-    until @charge == 100
-      @charge += 10
+    if @status == "off"
+      return "The system is offline! You can't charge it until it's been activated!"
+    else
+      until @charge == 100
+        @charge += 10
+      end
+       @charge
+      "The system is fully charged! Let's get it!"
     end
-     @charge
-    "The system is fully charged! Let's get it!"
   end
 # Also a setter method.
   def deactivate_system
